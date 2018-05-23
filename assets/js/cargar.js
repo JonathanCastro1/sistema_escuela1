@@ -11,48 +11,86 @@
 // chequear por consola al obtener GET
 
 // cargo las sessiones
-$.ajax({
-  url: "cargar_controller/cargarsessiones", 
+// $.ajax({
+//   url: "cargar_controller/cargarsessiones", 
   
-})
-.done(function(resp) {
+// })
+// .done(function(resp) {
 
-  // console.log(resp);
-   $('#session').html(resp);  
+//   // console.log(resp);
+//    $('#session').html(resp);  
+// })
+// .fail(function() {
+//   console.log("error");
+// });
+
+// // cargo los turnos
+// $.ajax({
+//  url: "cargar_controller/cargarturnos", 
+  
+// })
+// .done(function(resp) {
+  
+//   $('#turno').html(resp);  
+// })
+// .fail(function() {
+//  console.log("error");
+// });
+
+// // cargo los turnos
+// $.ajax({
+//  url: "cargar_controller/cargarsedes", 
+  
+// })
+// .done(function(resp) {
+  
+//   $('#sede').html(resp);  
+// })
+// .fail(function() {
+//  console.log("error");
+// });
+
+
+
+
+// cargando select con getjson, cargo las sessiones
+$.getJSON('cargar_controller/cargarsessiones',{session:"session"}, function(resp) {
+
+	 // $('#prueba').html(resp); 
+	 $.each(resp, function(index, val) {
+	 	 $('#session').append('<option value="'+index+'">'+val.session+'</option>')
+	 });
 })
-.fail(function() {
-  console.log("error");
+
+
+// cargando select con getjson, cargo los turnos
+$.getJSON('cargar_controller/cargarturnos',{turno:"turno"}, function(resp) {
+
+	 // $('#prueba').html(resp); 
+	 $.each(resp, function(index, val) {
+	 	 $('#turno').append('<option value="'+index+'">'+val.turno+'</option>')
+	 });
+})
+
+
+// cargando select con getjson, cargo las sedes
+$.getJSON('cargar_controller/cargarsedes',{sede:"sede"}, function(resp) {
+
+	 // $('#prueba').html(resp); 
+	 $.each(resp, function(index, val) {
+	 	 $('#sede').append('<option value="'+index+'">'+val.sede+'</option>')
+	 });
+})
+
+
+
+
+
+
+
+
 });
 
-// cargo los turnos
-$.ajax({
- url: "cargar_controller/cargarturnos", 
-  
-})
-.done(function(resp) {
-  
-  $('#turno').html(resp);  
-})
-.fail(function() {
- console.log("error");
-});
-
-// cargo los turnos
-$.ajax({
- url: "cargar_controller/cargarsedes", 
-  
-})
-.done(function(resp) {
-  
-  $('#sede').html(resp);  
-})
-.fail(function() {
- console.log("error");
-});
-
-
-
-});
 
 
 

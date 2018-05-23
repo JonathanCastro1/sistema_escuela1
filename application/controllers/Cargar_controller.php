@@ -21,15 +21,20 @@ class Cargar_controller extends CI_Controller {
 		public function cargarSessiones()
 	{
 		
+
 		$data = $this->cargar_model->cargarSessiones();
 
-		echo '<option>Session</option>';
+		print_r(json_encode($data));
 
-		foreach ($data as $datos) {
+		
+		// una forma de cargar select
+		// echo '<option>Session</option>';
+
+		// foreach ($data as $datos) {
 			
 
-			echo '<option>'.$datos->session.'</option>';
-		}
+		// 	echo '<option>'.$datos->session.'</option>';
+		// }
 
 			
 
@@ -41,13 +46,16 @@ class Cargar_controller extends CI_Controller {
 		
 		$data = $this->cargar_model->cargarTurnos();
 
-		echo '<option>Turno</option>';
+		print_r(json_encode($data));
 
-		foreach ($data as $datos) {
+
+	// 	echo '<option>Turno</option>';
+
+	// 	foreach ($data as $datos) {
 			
 
-			echo '<option>'.$datos->turno.'</option>';
-		}
+	// 		echo '<option>'.$datos->turno.'</option>';
+	// 	}
 
 	}
 
@@ -57,24 +65,25 @@ class Cargar_controller extends CI_Controller {
 		
 		$data = $this->cargar_model->cargarSedes();
 
-		echo '<option>Sede</option>';
+		print_r(json_encode($data));
 
-		foreach ($data as $datos) {
+		// echo '<option>Sede</option>';
+
+		// foreach ($data as $datos) {
 			
 
-			echo '<option>'.$datos->sede.'</option>';
-		}
-
-			
-
-
-	}
+		// 	echo '<option>'.$datos->sede.'</option>';
+		// }
 
 			
 
 
 	}
 
+			
+
+
+	}
 
 
 
