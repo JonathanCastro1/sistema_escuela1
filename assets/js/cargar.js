@@ -1,5 +1,4 @@
-
-  $(document).ready(function() {
+$(document).ready(function() {
 
 // Buena forma si no tuviera ya mi base_url configurada
  // var base_url = <?php echo base_url();?> 
@@ -58,7 +57,7 @@ $.getJSON('cargar_controller/cargarsessiones',{session:"session"}, function(resp
 
 	 // $('#prueba').html(resp); 
 	 $.each(resp, function(index, val) {
-	 	 $('#session').append('<option value="'+index+'">'+val.session+'</option>')
+	 	 $('#session').append('<option value="'+val.session+'">'+val.session+'</option>')
 	 });
 })
 
@@ -68,7 +67,7 @@ $.getJSON('cargar_controller/cargarturnos',{turno:"turno"}, function(resp) {
 
 	 // $('#prueba').html(resp); 
 	 $.each(resp, function(index, val) {
-	 	 $('#turno').append('<option value="'+index+'">'+val.turno+'</option>')
+	 	 $('#turno').append('<option value="'+val.turno+'">'+val.turno+'</option>')
 	 });
 })
 
@@ -78,9 +77,21 @@ $.getJSON('cargar_controller/cargarsedes',{sede:"sede"}, function(resp) {
 
 	 // $('#prueba').html(resp); 
 	 $.each(resp, function(index, val) {
-	 	 $('#sede').append('<option value="'+index+'">'+val.sede+'</option>')
+	 	 $('#sede').append('<option value="'+val.sede+'">'+val.sede+'</option>')
 	 });
 })
+
+
+// ejemplo con index y valor
+
+// $.getJSON('cargar_controller/cargarsedes',{sede:"sede"}, function(resp) {
+
+// 	 // $('#prueba').html(resp); 
+// 	 $.each(resp, function(index, val) {
+// 	 	 $('#sede').append('<option value="'+index+'">'+val.sede+'</option>')
+// 	 });
+// })
+
 
 
 
