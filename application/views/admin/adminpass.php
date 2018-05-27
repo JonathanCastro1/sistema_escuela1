@@ -5,12 +5,13 @@
 
 
  <div class="col-lg-4">
-                        <h1 class="page-header">
-                           Admin
-                            <small>Cambiar contraseña</small>
-                        </h1>
+               <h1 class="page-header">
+                Admin
+                   <small>Cambiar contraseña</small>
+                </h1>
 
 </div>
+
 
 
 
@@ -18,17 +19,29 @@
 			
 			<div class="form-group col-md-6">	
 
-			<label>Nueva contraseña:</label>
-			<input type="text" class="form-control" name="contrasenan">
+				<label>Nueva contraseña:</label>
+				<input type="text" class="form-control" name="contrasenan">
 
-			<label>Vieja contraseña:</label>
-			<input type="text" class="form-control" name="contrasenav">
+				<label>Vieja contraseña:</label>
+				<input type="text" class="form-control" name="contrasenav">
 					
-			
+			<br>
 
-			<div class="col-md-12 text-center ">
-			<button type="submit" name="submit" value="submit" class="btn-success btn-sm glyphicon glyphicon-ok">Registrar</button>
-			<button type="reset" class="btn-danger btn-sm glyphicon glyphicon-remove">Cancelar</button>	
+			
+				<button type="submit"  name="submit" value="submit" class="btn-success btn-sm glyphicon glyphicon-ok">Registrar</button>
+				<button type="reset" class="btn-danger btn-sm glyphicon glyphicon-remove">Cancelar</button>	
+
+			</div>
+
+<br>
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+<br>
 
 <br>
 <br>
@@ -46,3 +59,5 @@
 
 		</form>
 		
+
+
