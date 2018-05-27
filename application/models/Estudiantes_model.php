@@ -32,6 +32,45 @@ class Estudiantes_model extends CI_Model {
 		return $query;
 	}
 
+	public function editarEstudiantes($nombre ,$apellido ,$email ,$session ,$turno ,$sede ,$id)
+	{			
+				
+		$sql = "UPDATE estudiantes SET nombre = '$nombre',
+				apellido = '$apellido',				
+				email = '$email',
+				session = '$session',
+				turno = '$turno',
+				sede = '$sede'
+		       WHERE id = $id";
+
+		$query = $this->db->query($sql);    	
+		
+		 return $query;
+	}
+
+
+	public function estudiantesPorId($id)
+	{
+		
+		$sql = "SELECT id,nombre,apellido,email,session,turno,sede from estudiantes where id= $id";
+
+		$query = $this->db->query($sql);
+
+		return $query->row();
+	}
+
+
+		public function eliminarEstudiantes($id)
+	{			
+				
+		$sql = "DELETE from estudiantes where id='$id'";
+
+		$query = $this->db->query($sql);    	
+		
+		 return $query;
+	}
+
+
 		public function totalEstudiantes()
 	{		
 		
