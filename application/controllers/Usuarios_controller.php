@@ -39,12 +39,55 @@ class Usuarios_controller extends CI_Controller {
             } else {			
 
 			redirect(base_url("index.php/dashboard_controller"));
-		}
-			
-
-		
+		}	
 
 	}
+
+
+
+        // obtengo el parametro id
+        public function editar($id) {       
+                
+            // mantego abierta los datos de la session
+            $data['usuario'] = $this->session->userdata('usuario');
+            // $data['contrasena'] = $this->session->userdata('contrasena');   
+            
+            $data['datos'] = $this->usuarios_model->usuariosPorId($id);
+
+
+                if (isset($_POST['submit'])) {
+                            $nombre = $this->input->post('nombre');
+                            $apellido = $this->input->post('apellido');
+                            $nacimiento = $this->input->post('nacimiento');
+                            $email = $this->input->post('email');
+                            $telefono = $this->input->post('telefono');
+
+                $data['datos']= $this->usuarios_model->editarUsuarios($nombre,$apellido ,$nacimiento ,$email ,$telefono , $id);
+                $this->load->view('admin/editar_usuarios',$data);
+
+                redirect(base_url("index.php/usuarios_controller"));
+                            
+                
+                } 
+                
+                $this->load->view('include/header');
+                $this->load->view('include/navbar',$data);
+                $this->load->view('include/sidebar');           
+                $this->load->view('admin/editar_usuarios',$data);
+                $this->load->view('include/footer');                     
+
+    }
+
+
+      public function eliminar($id)   {
+       
+
+            $this->usuarios_model->eliminarUsuarios($id);
+
+            redirect(base_url("index.php/usuarios_controller"));   
+                
+
+    }
 
 
 		public function totalUsuarios()
