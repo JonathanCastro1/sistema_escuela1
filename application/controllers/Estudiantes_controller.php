@@ -37,12 +37,56 @@ class Estudiantes_controller extends CI_Controller {
             } else {			
 
 			redirect(base_url("index.php/dashboard_controller"));
-		}
-			
-
-		
+		}		
 
 	}
+
+
+     // obtengo el parametro id
+        public function editar($id) {       
+                
+            // mantego abierta los datos de la session
+            $data['usuario'] = $this->session->userdata('usuario');
+            // $data['contrasena'] = $this->session->userdata('contrasena');   
+            
+            $data['datos'] = $this->estudiantes_model->estudiantesPorId($id);
+
+
+                if (isset($_POST['submit'])) {
+                            $nombre = $this->input->post('nombre');
+                            $apellido = $this->input->post('apellido');
+                            $email = $this->input->post('email');
+                            $session = $this->input->post('session');
+                            $turno = $this->input->post('turno');
+                            $sede = $this->input->post('sede');
+
+                $data['datos']= $this->estudiantes_model->editarEstudiantes($nombre ,$apellido ,$email ,$session ,$turno ,$sede , $id);
+                $this->load->view('admin/editar_estudiantes',$data);
+
+                redirect(base_url("index.php/estudiantes_controller"));
+                            
+                
+                } 
+                
+                $this->load->view('include/header');
+                $this->load->view('include/navbar',$data);
+                $this->load->view('include/sidebar');           
+                $this->load->view('admin/editar_estudiantes',$data);
+                $this->load->view('include/footer');                     
+
+    }
+
+
+
+        public function eliminar($id)   {
+       
+
+            $this->estudiantes_model->eliminarEstudiantes($id);
+
+            redirect(base_url("index.php/estudiantes_controller"));   
+                
+
+    }
 
 
 		public function totalEstudiantes()
