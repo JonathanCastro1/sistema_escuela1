@@ -11,6 +11,7 @@ class Dashboard_controller extends CI_Controller {
 		$data['datos'] = $this->usuarios_model->totalUsuarios();
 		$data['dato'] = $this->estudiantes_model->totalEstudiantes();
 		$data['dat'] = $this->profesores_model->totalProfesores();
+		$data['da'] = $this->calificaciones_model->estudiantesAprobados();
 		
 
 		$this->load->view('include/header');
