@@ -37,11 +37,56 @@ class Profesores_controller extends CI_Controller {
 
 			redirect(base_url("index.php/dashboard_controller"));
 		}
-			
 
+    }
+
+
+    // obtengo el parametro id
+        public function editar($id) {       
+                
+            // mantego abierta los datos de la session
+            $data['usuario'] = $this->session->userdata('usuario');
+            // $data['contrasena'] = $this->session->userdata('contrasena');   
+            
+            $data['datos'] = $this->profesores_model->profesoresPorId($id);
+
+
+                if (isset($_POST['submit'])) {
+                            $nombre = $this->input->post('nombre');
+                            $apellido = $this->input->post('apellido');
+                            $email = $this->input->post('email');
+                            $session = $this->input->post('session');
+                            $turno = $this->input->post('turno');
+                            $sede = $this->input->post('sede');
+
+                $data['datos']= $this->profesores_model->editarProfesores($nombre ,$apellido ,$email ,$session ,$turno ,$sede , $id);
+                $this->load->view('admin/editar_profesores',$data);
+
+                redirect(base_url("index.php/profesores_controller"));
+                            
+                
+                } 
+                
+                $this->load->view('include/header');
+                $this->load->view('include/navbar',$data);
+                $this->load->view('include/sidebar');                          
+                $this->load->view('admin/editar_profesores',$data);
+                $this->load->view('include/footer');                     
+
+    }
+ 
+
+
+        public function eliminar($id)   {
+       
+
+            $this->profesores_model->eliminarProfesores($id);
+
+            redirect(base_url("index.php/profesores_controller"));   
+                
+
+    }
 		
-
-	}
 
 
 		public function totalProfesores()
