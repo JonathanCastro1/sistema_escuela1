@@ -115,8 +115,11 @@
                                         <i class="fas fa-fas fa-smile fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        
-                                        <div>Aprobados</div>
+                                      
+                                        <div>Estudiantes Aprobados
+                                            <div><?php echo $da->totalaprobados?>                       
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
