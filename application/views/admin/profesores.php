@@ -58,13 +58,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<td><?php echo $dato->turno ?> </td>
 		<td><?php echo $dato->sede ?> </td>
 		<td >
-		<a href="<?php echo base_url();?>index.php/usuarios_controller/ver"><span class="btn-info btn-xs glyphicon glyphicon-zoom-in" data-toggle="ver" title="Ver"></span></a>
+		<a href="<?php echo base_url();?>index.php/profesores_controller/ver"><span class="btn-info btn-xs glyphicon glyphicon-zoom-in" data-toggle="ver" title="Ver"></span></a>
 		
 		
-		 <a  href="<?php echo base_url("index.php/usuarios_controller/editar/$dato->id") ?>" ><span class="btn-primary btn-xs glyphicon glyphicon-pencil" data-toggle="editar" title="Editar"></span></a>
+		 <a  href="<?php echo base_url("index.php/profesores_controller/editar/$dato->id") ?>" ><span class="btn-primary btn-xs glyphicon glyphicon-pencil" data-toggle="editar" title="Editar"></span></a>
 		
 		
-		 <a id="eliminar"  href="<?php echo base_url("index.php/usuarios_controller/eliminar/$dato->id") ?>" ><span class="btn-danger btn-xs glyphicon glyphicon-trash" data-toggle="eliminar" title="Eliminar"></span></a>
+		 <a id="eliminar"  href="<?php echo base_url("index.php/profesores_controller/eliminar/$dato->id") ?>" ><span class="btn-danger btn-xs glyphicon glyphicon-trash" data-toggle="eliminar" title="Eliminar"></span></a>
 		</td>
 
 		</tr>
@@ -99,17 +99,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<input type="text" name="apellido" placeholder="Apellido">		
 					<input type="text" name="email" placeholder="Email">
 					<select name="session" class="form-control" id="session" >
-												
+						<option>Sessiones</option>							
 					</select>
 					<br>
 
 					<select name="turno" class="form-control" id="turno" >
-												
+						<option>Turnos</option>							
 					</select>
 					<br>
 
 					<select name="sede" class="form-control" id="sede" >
-												
+						<option>Sedes</option>						
 					</select>
 					<br>						
 					<input type="submit" name="submit"  class="login loginmodal-submit" value="Agregar">
