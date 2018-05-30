@@ -16,9 +16,13 @@
 
 <!--    <script src="<?php echo base_url();?>assets/js/sidebar.js"></script> -->
 
-    <script src="<?php echo base_url();?>assets/js/tooltip.js"></script>
+   <script src="<?php echo base_url();?>assets/js/tooltip.js"></script>
 
-   <script src="<?php echo base_url();?>assets/js/efectos.js"></script>
+   <script src="<?php echo base_url();?>assets/js/efectos.js"></script> 
+
+
+  <!-- probando el get -->
+   <!--   <script src="<?php echo base_url();?>assets/js/pruebaget.js"></script> -->
 
   <!--    Datepicker js -->
 
@@ -132,9 +136,9 @@ google.charts.setOnLoadCallback(drawMultSeries);
 function drawMultSeries() {
       var data = google.visualization.arrayToDataTable([
         ['Estadistica', 'Comunidad activa'],
-        ['Usuarios', <?php echo $datos->totalusuarios?>],
-        ['Profesores', <?php echo $dat->totalprofesores?>],
-        ['Estudiantes', <?php echo $dato->totalestudiantes?>],        
+        ['Usuarios', <?php echo $tUsuarios->totalusuarios?>],
+        ['Profesores', <?php echo $tProfesores->totalprofesores?>],
+        ['Estudiantes', <?php echo $tEstudiantes->totalestudiantes?>],        
       ]);
 
       var options = {
@@ -153,6 +157,7 @@ function drawMultSeries() {
       chart.draw(data, options);
     }
  </script>
+
 
 
 </body>

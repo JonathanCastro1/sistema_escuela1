@@ -58,37 +58,37 @@
         <ul class="sidebar-nav" id="sidebar">     
        
                     <li class="sidebar-brand">
-                        <a href="<?php echo base_url();?>index.php/dashboard_controller">
+                        <a href="<?php echo base_url();?>dashboard_controller">
                             <span class="glyphicon glyphicon-dashboard" >Dashboard</span>
                         </a>
                     </li>
 
                     <li class="sidebar-brand">
-                        <a href="<?php echo base_url();?>index.php/usuarios_controller">
+                        <a href="<?php echo base_url();?>usuarios_controller">
                             <span class="glyphicon glyphicon-user">Usuarios</span>
                         </a>
                     </li>
 
                     <li class="sidebar-brand">
-                        <a href="<?php echo base_url();?>index.php/estudiantes_controller">
+                        <a href="<?php echo base_url();?>estudiantes_controller">
                             <span class="glyphicon glyphicon-education">Estudiantes</span>
                         </a>
                     </li>
 
                       <li class="sidebar-brand">
-                        <a href="<?php echo base_url();?>index.php/profesores_controller">
+                        <a href="<?php echo base_url();?>profesores_controller">
                             <span class="fas fa-chalkboard-teacher">Profesores</span>
                         </a>
                       </li>  
 
                       <li class="sidebar-brand">
-                        <a href="<?php echo base_url();?>index.php/horarios_controller">
+                        <a href="<?php echo base_url();?>horarios_controller">
                             <span class="fas fa-hourglass-start">Horarios</span>
                         </a>
                       </li>
 
                         <li class="sidebar-brand">
-                        <a href="<?php echo base_url();?>index.php/calificaciones_controller">
+                        <a href="<?php echo base_url();?>calificaciones_controller">
                             <span class="far fa-sticky-note"">Calificaciones</span>
                         </a>
                       </li>        

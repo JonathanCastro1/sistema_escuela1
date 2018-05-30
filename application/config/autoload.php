@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('database','session','fpdf');
+$autoload['libraries'] = array('database','session','fpdf','form_validation','phpexcel');
 
 /*
 | -------------------------------------------------------------------
@@ -133,4 +133,4 @@ $autoload['language'] = array();
 |	$autoload['model'] = array('first_model' => 'first');
 */
 $autoload['model'] = array('login_model','usuarios_model','estudiantes_model',
-'profesores_model','horarios_model','cargar_model');
+'profesores_model','horarios_model','cargar_model','calificaciones_model');

@@ -15,6 +15,18 @@ class Profesores_model extends CI_Model {
 		
 	}
 
+		public function mostrarProfesoresExcel()
+	{
+
+		$sql = "SELECT id,nombre,apellido,email,session,turno,sede
+		 from profesores";
+
+		$query = $this->db->query($sql);
+
+		return $query->result_array();
+		
+	}
+
 	public function agregarProfesores($nombre ,$apellido ,$email ,$session ,$turno ,$sede)
 	{		
 		
@@ -47,6 +59,28 @@ class Profesores_model extends CI_Model {
 		$query = $this->db->query($sql);    	
 		
 		 return $query;
+	}
+
+	public function verProfesores($nombre)
+	{		
+		
+		
+		$sql = "SELECT imagen.ruta,
+				profesores.nombre,
+				profesores.apellido,
+				profesores.email,
+				session.session,
+				sede.sede,
+				turno.turno
+				from profesores  INNER JOIN imagen on profesores.id= imagen.id
+				INNER JOIN session on profesores.id= session.id
+				INNER JOIN sede on profesores.id= sede.id
+				INNER JOIN turno on profesores.id= turno.id
+				where profesores.nombre = '$nombre' ";
+
+		$query = $this->db->query($sql);
+
+		return $query->row();
 	}
 
 

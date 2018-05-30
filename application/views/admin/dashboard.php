@@ -26,7 +26,7 @@
                                     </div>
                                     <div class="col-xs-9 text-right">                             
                                         <div>Usuarios
-                                        	<div><?php echo $datos->totalusuarios?>                  		
+                                        	<div><?php echo $tUsuarios->totalusuarios?>                  		
                                         	</div>
                                         </div>
                                     </div>
@@ -55,7 +55,7 @@
                                     <div class="col-xs-9 text-right">
                                         
                                         <div>Profesores
-                                            <div><?php echo $dat->totalprofesores?>                        
+                                            <div><?php echo $tProfesores->totalprofesores?>                        
                                             </div>
                                         </div>
                                     </div>
@@ -85,7 +85,7 @@
                                     </div>
                                     <div class="col-xs-9 text-right">                                        
                                         <div>Estudiantes
-                                        	<div><?php echo $dato->totalestudiantes?>                  		
+                                        	<div><?php echo $tEstudiantes->totalestudiantes?>                  		
                                         	</div>
                                         </div>
                                     </div>
@@ -117,7 +117,7 @@
                                     <div class="col-xs-9 text-right">
                                       
                                         <div>Estudiantes Aprobados
-                                            <div><?php echo $da->totalaprobados?>                       
+                                            <div><?php echo $tAprobados->totalaprobados?>                       
                                             </div>
                                         </div>
                                     </div>

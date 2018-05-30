@@ -15,14 +15,36 @@ class Calificaciones_controller extends CI_Controller {
 		$this->load->view('include/header');
 		$this->load->view('include/navbar',$data);
 		$this->load->view('include/sidebar');
-		$this->load->view('admin/calificaciones',$data);
+		$this->load->view('admin/calificaciones');
 		$this->load->view('include/footer');
 	}
 
-	 public function agregarCalificaciones()	{                 
-                   
-				
-			if (isset($_POST['submit'])) {	
+	 public function agregarCalificaciones()	{  
+
+
+
+     // Establecemos las reglas de validacion
+         $this->form_validation->set_rules('alumno', 'Ingrese un nombre', 'required|max_length[10]');
+         $this->form_validation->set_rules('nota', 'Ingrese una nota', 'required|max_length[10]');       
+         $this->form_validation->set_rules('descripcion', 'Ingrese una descripcion', 'required','required|max_length[30]');
+         $this->form_validation->set_rules('fecha', 'Ingrese una fecha', 'required');
+         $this->form_validation->set_rules('session', 'Seleccione session', 'required'); 
+         $this->form_validation->set_rules('turno', 'Seleccione turno', 'required');
+         $this->form_validation->set_rules('sede', 'Seleccione sede', 'required');   
+      
+
+
+
+       if ($this->form_validation->run() == FALSE){
+		// nota cuando carga otra vista, se pierda la carga con ajax
+			// $this->load->view('admin/calificaciones');
+
+         redirect(base_url("calificaciones_controller"));
+
+           }else{
+
+
+           	if (isset($_POST['submit'])) {	
 
 		    $alumno = $this->input->post('alumno');
 			$nota = $this->input->post('nota');			
@@ -34,13 +56,18 @@ class Calificaciones_controller extends CI_Controller {
 
 			$this->calificaciones_model->agregarCalificaciones($alumno ,$nota ,$descripcion , $fecha,$session ,$turno ,$sede);
 
-			redirect(base_url("index.php/calificaciones_controller"));
+			redirect(base_url("dashboard_controller"));
 					
                          	
-            } else {			
+            } 	
+				
 
-			redirect(base_url("index.php/dashboard_controller"));
-		}		
+             
+
+	}	               
+                   
+				
+			
 
 	}
 

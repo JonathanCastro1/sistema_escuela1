@@ -9,7 +9,7 @@
 
 		<div class="page-header"><h2>Iniciar Session </h2></div>
 
-		<form action="<?php echo base_url();?>index.php/login_controller/iniciarSession" method="POST">
+		<form action="<?php echo base_url();?>login_controller/iniciarSession" method="POST">
 			
 			<input type="text" class="form-control" name="usuario" placeholder="Usuario"
 			value="admin">

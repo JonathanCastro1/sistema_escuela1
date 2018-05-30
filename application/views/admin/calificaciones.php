@@ -26,23 +26,26 @@
 
 
 
-		<form action="<?php echo base_url();?>index.php/calificaciones_controller/agregarCalificaciones" method="post">
+		<form action="<?php echo base_url();?>calificaciones_controller/agregarCalificaciones" method="post">
 		
 
 			<div class="form-group col-md-4">			
 			
 
 			<label>Alumno:</label>
+			<!-- <?php echo form_error('alumno'); ?> -->
 			<input type="text" class="form-control" name="alumno">
 		
 			<label>Nota:</label>
-			<input type="text" class="form-control" name="nota">
+			<!-- <?php echo form_error('nota'); ?> -->
+			<input type="number" class="form-control" name="nota">
 		
 			<label>Descripcion:</label>	
+			<!-- <?php echo form_error('descripcion'); ?> -->
 			<textarea name="descripcion"  class="form-control"></textarea>
 
 			<label>Fecha:</label>
-
+			<!-- <?php echo form_error('fecha'); ?> -->
 			<input type="text" id="datepicker" name="fecha" class="form-control">
 
 			</div>
@@ -51,17 +54,19 @@
 			
 			
 			<br>
-		
+			<!-- <?php echo form_error('session'); ?> -->
 			<select name="session" class="form-control" id="session">
 				<option>Sessiones</option>									
 			</select>
 			<br>
-				
+			
+			<!-- <?php echo form_error('turno'); ?> -->	
 			<select name="turno" class="form-control" id="turno" >
 				<option>Turnos</option>							
 			</select>
 			<br>
 			
+			<!-- <?php echo form_error('sede'); ?> -->
 			<select name="sede" class="form-control" id="sede" >
 				<option>Sedes</option>						
 			</select>

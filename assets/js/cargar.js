@@ -1,4 +1,5 @@
-$(document).ready(function() {
+
+  $(document).ready(function() {
 
 // Buena forma si no tuviera ya mi base_url configurada
  // var base_url = <?php echo base_url();?> 
@@ -53,6 +54,8 @@ $(document).ready(function() {
 
 
 // cargando select con getjson, cargo las sessiones
+// session es parametro y "session" el valor   session:"session"
+
 $.getJSON('cargar_controller/cargarsessiones',{session:"session"}, function(resp) {
 
 	 // $('#prueba').html(resp); 
@@ -94,6 +97,14 @@ $.getJSON('cargar_controller/cargarsedes',{sede:"sede"}, function(resp) {
 
 
 
+// cargando select con getjson, cargo las sessiones
+// $.getJSON('cargar_controller/cargarsessiones',{session:"session"}, function(resp) {
+
+// 	 // $('#prueba').html(resp); 
+// 	 $.each(resp, function(index, val) {
+// 	 	 $('#sessiono').append('<option value="'+val.session+'">'+val.session+'</option>')
+// 	 });
+// })
 
 
 
@@ -101,7 +112,6 @@ $.getJSON('cargar_controller/cargarsedes',{sede:"sede"}, function(resp) {
 
 
 });
-
 
 
 

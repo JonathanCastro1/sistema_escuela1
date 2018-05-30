@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-05-2018 a las 00:30:19
+-- Tiempo de generación: 30-05-2018 a las 03:10:27
 -- Versión del servidor: 10.1.32-MariaDB
 -- Versión de PHP: 5.6.36
 
@@ -46,7 +46,8 @@ CREATE TABLE `calificaciones` (
 INSERT INTO `calificaciones` (`id`, `alumno`, `nota`, `descripcion`, `fecha`, `session`, `turno`, `sede`) VALUES
 (1, 'jonathan', '19,5', 'buen  alumno', '10-10-2018', 'a40', 'noche', 'centro'),
 (2, 'pedro', '17', 'un poco distraido en el examen', '01-05-2018', 'a40', 'nocturno', 'centro'),
-(4, 'gonzalo', '13', 'bajo su rendimiento este periodo', '01-05-2018', 'a41', 'nocturno', 'centro');
+(4, 'gonzalo', '13', 'bajo su rendimiento este periodo', '01-05-2018', 'a41', 'nocturno', 'centro'),
+(5, 'pepito', '12', 'buen alumno', '01-05-2018', 'a41', 'vespertino', 'zulia');
 
 -- --------------------------------------------------------
 
@@ -69,11 +70,12 @@ CREATE TABLE `estudiantes` (
 --
 
 INSERT INTO `estudiantes` (`id`, `nombre`, `apellido`, `email`, `session`, `turno`, `sede`) VALUES
-(1, 'jonathan', 'castro', 'castro@hotmail.com', 'a50', 'noche', 'centro'),
-(2, 'derek', 'ramirez', 'derek@gmail.com', 'a40', 'tarde', 'naranjos'),
-(3, 'chin', 'chon', 'chin@gmail.com', 'a40', 'noche', 'naranjos'),
 (4, 'john', 'virmeo', 'virmeo@gmail.com', 'a40', 'noche', 'centro'),
-(5, 'pepito', 'pepito', 'pepito@hotmail.com', 'a40', 'noche', 'naranjos');
+(5, 'jonathan', 'castro', 'castro@hotmail.com', 'a50', 'noche', 'centro'),
+(6, 'chin', 'chon', 'chin@gmail.com', 'a40', 'noche', 'naranjos'),
+(7, 'jose', 'jorocho', 'jose@hotmail.com', 'a41', 'matutino', 'centro'),
+(8, 'carlin', 'chacon', 'chacon@hotmail.com', 'a40', 'nocturno', 'centro'),
+(9, 'chamin', 'chamin', 'chamin@hotmail.com', 'a40', 'nocturno', 'catia');
 
 -- --------------------------------------------------------
 
@@ -103,6 +105,31 @@ INSERT INTO `horarios` (`id`, `hora`, `profesor`, `materia`, `session`, `turno`,
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `imagen`
+--
+
+CREATE TABLE `imagen` (
+  `id` int(50) NOT NULL,
+  `ruta` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `imagen`
+--
+
+INSERT INTO `imagen` (`id`, `ruta`) VALUES
+(4, 'escanor.jpg'),
+(5, 'ichigo.jpg'),
+(6, 'luffy.jpg'),
+(7, 'slipknot.png'),
+(8, 'souma.jpg'),
+(9, 'ash.png'),
+(10, 'perro.jpg'),
+(11, 'zed.jpg');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `profesores`
 --
 
@@ -121,8 +148,11 @@ CREATE TABLE `profesores` (
 --
 
 INSERT INTO `profesores` (`id`, `nombre`, `apellido`, `email`, `session`, `turno`, `sede`) VALUES
-(1, 'yosmar', 'chacon', 'yosmar@hotmail.com', 'a41', 'noche', 'centro'),
-(2, 'charbel', 'wakan', 'wakan@yahoo.com', 'a42', 'mañana', 'naranjos');
+(4, 'yosmar', 'chacon', 'yosmar@hotmail.com', 'a41', 'noche', 'centro'),
+(5, 'charbel', 'wakan', 'wakan@yahoo.com', 'a42', 'mañana', 'naranjos'),
+(6, 'krilin', 'chamin', 'chamin@gmail.com', 'a40', 'nocturno', 'centro'),
+(7, 'calin', 'mamin', 'mamin@hotmail.com', 'a40', 'nocturno', 'centro'),
+(8, 'yukin', 'yukin', 'yukin@gmail.com', 'a45', 'media tarde', 'quinta crespo');
 
 -- --------------------------------------------------------
 
@@ -140,8 +170,12 @@ CREATE TABLE `sede` (
 --
 
 INSERT INTO `sede` (`id`, `sede`) VALUES
-(1, 'centro'),
-(2, 'naranjos');
+(4, 'centro'),
+(5, 'naranjos'),
+(6, 'catia'),
+(7, 'petare'),
+(8, 'zulia'),
+(9, 'quinta crespo');
 
 -- --------------------------------------------------------
 
@@ -164,7 +198,11 @@ INSERT INTO `session` (`id`, `session`) VALUES
 (3, 'a42'),
 (4, 'a43'),
 (5, 'a44'),
-(6, 'a45');
+(6, 'a45'),
+(7, 'a47'),
+(8, 'a48'),
+(9, 'a49'),
+(10, 'a50');
 
 -- --------------------------------------------------------
 
@@ -182,9 +220,12 @@ CREATE TABLE `turno` (
 --
 
 INSERT INTO `turno` (`id`, `turno`) VALUES
-(1, 'matutino'),
-(2, 'vespertino'),
-(3, 'nocturno');
+(4, 'matutino'),
+(5, 'vespertino'),
+(6, 'nocturno'),
+(7, 'madrugada'),
+(8, 'media mañana'),
+(9, 'media tarde');
 
 -- --------------------------------------------------------
 
@@ -208,9 +249,12 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `nacimiento`, `email`, `telefono`, `usuario`, `contrasena`) VALUES
-(1, 'jonathan', 'castro', '27-10-1979', 'castro@hotmail.com', 12345678, 'admin', 'admin'),
-(2, 'petra', 'chacon', '10-10-2001', 'algo@gmail.com', 4249999999, 'petra', 'petrica'),
-(6, 'nuevo', 'nuevo', '01-05-2018', 'nuevo@hotmail.com', 5452311, 'nuevo1', 'nuevo');
+(4, 'jonathan', 'castro', '27-10-1979', 'castro@hotmail.com', 12345678, 'admin', 'admin'),
+(5, 'petra', 'chacon', '10-10-2001', 'algo@gmail.com', 4249999999, 'petra', '12'),
+(6, 'ramon', 'ramones', '01-09-2009', 'ramones@hotmail.com', 1234567, 'ramon', '123'),
+(7, 'maire', 'maire', '04-08-2009', 'maire@hotmail.com', 1234567, 'maire', '12'),
+(8, 'gonzalo', 'perez', '01-11-2010', 'gonzalo@hotmail.com', 5678424, 'gonzalo', '123'),
+(9, 'pepito', 'pepito', '01-05-2018', 'pepito@hotmail.com', 556789, 'pepito', '123');
 
 --
 -- Índices para tablas volcadas
@@ -232,6 +276,12 @@ ALTER TABLE `estudiantes`
 -- Indices de la tabla `horarios`
 --
 ALTER TABLE `horarios`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `imagen`
+--
+ALTER TABLE `imagen`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -272,13 +322,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `calificaciones`
 --
 ALTER TABLE `calificaciones`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `estudiantes`
 --
 ALTER TABLE `estudiantes`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `horarios`
@@ -287,34 +337,40 @@ ALTER TABLE `horarios`
   MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT de la tabla `imagen`
+--
+ALTER TABLE `imagen`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
 -- AUTO_INCREMENT de la tabla `profesores`
 --
 ALTER TABLE `profesores`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `sede`
 --
 ALTER TABLE `sede`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `session`
 --
 ALTER TABLE `session`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `turno`
 --
 ALTER TABLE `turno`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

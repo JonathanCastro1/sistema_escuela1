@@ -17,26 +17,77 @@ class Profesores_controller extends CI_Controller {
 		$this->load->view('include/footer');
 	}
 
-	 public function agregarProfesores()	{                 
+	 public function agregarProfesores()	{ 
+
+
+
+   // Establecemos las reglas de validacion
+         $this->form_validation->set_rules('nombre', 'Ingrese un nombre', 'required|max_length[10]');
+         $this->form_validation->set_rules('apellido', 'Ingrese un apellido', 'required|max_length[10]');       
+         $this->form_validation->set_rules('email', 'Ingrese un email valido', 'required','required|max_length[10]');
+         $this->form_validation->set_rules('session', 'Seleccione session', 'required'); 
+         $this->form_validation->set_rules('turno', 'Seleccione turno');
+         $this->form_validation->set_rules('sede', 'Seleccione sede');   
+      
+
+
+
+       if ($this->form_validation->run() == FALSE){
+
+        // me quedo en esta vista, si no esta validado
+                // $data['usuario'] = $this->session->userdata('usuario');
+                // $data['contrasena'] = $this->session->userdata('contrasena');
+
+                // $data['datos'] = $this->estudiantes_model->seleccionarEstudiantes();
+
+                // $this->load->view('include/header');
+                // $this->load->view('include/navbar',$data);
+                // $this->load->view('include/sidebar');
+                // $this->load->view('admin/estudiantes',$data);
+                // $this->load->view('include/footer');
+
+        redirect(base_url("profesores_controller"));
+
+           }else{
+
+             if (isset($_POST['submit'])) {  
+
+                 $nombre = $this->input->post('nombre');
+                 $apellido = $this->input->post('apellido');     
+                 $email = $this->input->post('email');
+                 $session = $this->input->post('session');
+                 $turno = $this->input->post('turno');
+                 $sede = $this->input->post('sede');     
+
+     $this->profesores_model->agregarProfesores($nombre ,$apellido ,$email ,$session ,$turno ,$sede);
+
+     redirect(base_url("dashboard_controller"));   
+                          
+          
+             
+
+  }  
+
+  }               
                    
 				
-			if (isset($_POST['submit'])) {	
+		// 	if (isset($_POST['submit'])) {	
 
-		    $nombre = $this->input->post('nombre');
-			$apellido = $this->input->post('apellido');			
-			$email = $this->input->post('email');
-			$session = $this->input->post('session');
-			$turno = $this->input->post('turno');
-			$sede = $this->input->post('sede');			
+		//     $nombre = $this->input->post('nombre');
+		// 	$apellido = $this->input->post('apellido');			
+		// 	$email = $this->input->post('email');
+		// 	$session = $this->input->post('session');
+		// 	$turno = $this->input->post('turno');
+		// 	$sede = $this->input->post('sede');			
 
-			$this->profesores_model->agregarProfesores($nombre ,$apellido ,$email ,$session ,$turno ,$sede);
+		// 	$this->profesores_model->agregarProfesores($nombre ,$apellido ,$email ,$session ,$turno ,$sede);
 
-			redirect(base_url("index.php/profesores_controller"));			
+		// 	redirect(base_url("profesores_controller"));			
                          	
-            } else {			
+  //           } else {			
 
-			redirect(base_url("index.php/dashboard_controller"));
-		}
+		// 	redirect(base_url("dashboard_controller"));
+		// }
 
     }
 
@@ -62,7 +113,7 @@ class Profesores_controller extends CI_Controller {
                 $data['datos']= $this->profesores_model->editarProfesores($nombre ,$apellido ,$email ,$session ,$turno ,$sede , $id);
                 $this->load->view('admin/editar_profesores',$data);
 
-                redirect(base_url("index.php/profesores_controller"));
+                redirect(base_url("profesores_controller"));
                             
                 
                 } 
@@ -82,10 +133,32 @@ class Profesores_controller extends CI_Controller {
 
             $this->profesores_model->eliminarProfesores($id);
 
-            redirect(base_url("index.php/profesores_controller"));   
+            redirect(base_url("profesores_controller"));   
                 
 
     }
+
+     public function ver($nombre)   {
+       
+
+        $data['usuario'] = $this->session->userdata('usuario');
+        $data['contrasena'] = $this->session->userdata('contrasena');
+
+        // $data['datos'] = $this->usuarios_model->seleccionarUsuarios();
+
+        $data['datos']=$this->profesores_model->verProfesores($nombre);
+
+
+
+        $this->load->view('include/header');
+        $this->load->view('include/navbar',$data);
+        $this->load->view('include/sidebar');       
+        $this->load->view('admin/ver_profesores',$data);
+        $this->load->view('include/footer');  
+                
+
+    }
+
 		
 
 
@@ -98,7 +171,7 @@ class Profesores_controller extends CI_Controller {
 		
 	}
 
-	public function reporteProfesores()	{       	
+	public function reportePPdf()	{       	
 	
 	 $data = $this->profesores_model->seleccionarProfesores();
 	
@@ -176,6 +249,42 @@ class Profesores_controller extends CI_Controller {
     $this->pdf->Output("Reporte Profesores SchoolCastro 2.0.pdf", 'D');
 		
 	}
+
+
+    public function reportePExcel()
+    {
+
+        $data = $this->profesores_model->mostrarProfesoresExcel();
+       
+       //load our new PHPExcel library
+        $this->load->library('phpexcel');
+        //activate worksheet number 1
+        $this->phpexcel->setActiveSheetIndex(0);
+
+         //name the worksheet
+        $this->phpexcel->getActiveSheet()->setTitle('Reporte Profesores');
+
+    // mostramos la data del modelo biene en forma de array, con result_array
+
+    $this->phpexcel->getActiveSheet()->fromArray($data);
+
+
+
+ 
+    $filename='Reporte profesores.xls'; //save our workbook as this file name
+    header('Content-Type: application/vnd.ms-excel'); //mime type
+    header('Content-Disposition: attachment;filename="'.$filename.'"'); //tell browser what's the file name
+    header('Cache-Control: max-age=0'); //no cache
+                
+    //save it to Excel5 format (excel 2003 .XLS file), change this to 'Excel2007' (and adjust the filename extension, also the header mime type)
+    //if you want to save it as .XLSX Excel 2007 format
+    $objWriter = PHPExcel_IOFactory::createWriter($this->phpexcel, 'Excel5');  
+    //force user to download the Excel file without writing it to server's HD
+    $objWriter->save('php://output');
+       
+        
+    }
+ 
 
 
 

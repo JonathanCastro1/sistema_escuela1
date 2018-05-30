@@ -23,7 +23,7 @@
 
 			<br>
 			<br>	
-			<a href="<?php echo base_url();?>index.php/usuarios_controller"><span class="btn-default btn-sm glyphicon glyphicon-arrow-left">Regresar</span></a>
+			<a href="<?php echo base_url();?>usuarios_controller"><span class="btn-default btn-sm glyphicon glyphicon-arrow-left">Regresar</span></a>
 		</form>
 
 

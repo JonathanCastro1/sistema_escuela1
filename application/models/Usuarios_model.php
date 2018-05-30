@@ -15,6 +15,19 @@ class Usuarios_model extends CI_Model {
 		
 	}
 
+		public function mostrarUsuariosExcel()
+	{
+
+		$sql = "SELECT id,nombre,apellido,nacimiento,email,telefono
+		 from usuarios";
+
+		$query = $this->db->query($sql);
+
+		return $query->result_array();
+		
+	}
+
+
 		public function agregarUsuarios($nombre ,$apellido ,$nacimiento ,$email ,$telefono,$usuario , $contrasena)
 	{		
 		
@@ -48,6 +61,26 @@ class Usuarios_model extends CI_Model {
 		
 		 return $query;
 	}
+
+
+		public function verUsuarios($nombre)
+	{		
+		
+		// $sql = "SELECT ruta from imagen where id = $id ";
+
+		$sql = "SELECT imagen.ruta,
+				usuarios.nombre,
+				usuarios.apellido,
+				usuarios.nacimiento,
+				usuarios.telefono				
+				from usuarios  INNER JOIN imagen on usuarios.id= imagen.id				
+				where usuarios.nombre = '$nombre' ";
+
+		$query = $this->db->query($sql);
+
+		return $query->row();
+	}
+
 
 
 	public function usuariosPorId($id)

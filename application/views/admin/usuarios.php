@@ -17,9 +17,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<div>
 			<a ><span class="btn-success btn-xs glyphicon glyphicon-plus" data-toggle="modal" data-target="#login-modal" id="">Agregar</span></a>
 
-			<a  href="<?php echo base_url();?>index.php/usuarios_controller/reporteUsuarios"><span class="btn-danger  btn-xs glyphicon glyphicon-file">PDF</span></a>
+			<a  href="<?php echo base_url();?>usuarios_controller/reporteUPdf"><span class="btn-danger  btn-xs glyphicon glyphicon-file">PDF</span></a>
 
-			<a  href="<?php echo base_url();?>index.php/usuarios_controller/reporte"><span class="btn-warning  btn-xs glyphicon glyphicon-download-alt">XLS</span></a>			
+			<a  href="<?php echo base_url();?>usuarios_controller/reporteUExcel"><span class="btn-warning  btn-xs glyphicon glyphicon-download-alt">XLS</span></a>			
 		</div>
 		
 
@@ -57,13 +57,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<td><?php echo $dato->email ?> </td>
 		<td><?php echo $dato->telefono ?> </td>
 		<td >
-		<a href="<?php echo base_url();?>index.php/usuarios_controller/ver"><span class="btn-info btn-xs glyphicon glyphicon-zoom-in" data-toggle="ver" title="Ver"></span></a>
+		<!-- <a href="<?php echo base_url();?>usuarios_controller/ver/$dato->id"><span class="btn-info btn-xs glyphicon glyphicon-zoom-in" data-toggle="ver" title="Ver"></span></a> -->
+
+		 <a  href="<?php echo base_url("usuarios_controller/ver/$dato->nombre") ?>" ><span class="btn-primary btn-xs glyphicon glyphicon-zoom-in" data-toggle="ver" title="Ver"></span></a>
 		
 		
-		 <a  href="<?php echo base_url("index.php/usuarios_controller/editar/$dato->id") ?>" ><span class="btn-primary btn-xs glyphicon glyphicon-pencil" data-toggle="editar" title="Editar"></span></a>
+		 <a  href="<?php echo base_url("usuarios_controller/editar/$dato->id") ?>" ><span class="btn-success btn-xs glyphicon glyphicon-pencil" data-toggle="editar" title="Editar"></span></a>
 		
 		
-		 <a id="eliminar"  href="<?php echo base_url("index.php/usuarios_controller/eliminar/$dato->id") ?>" ><span class="btn-danger btn-xs glyphicon glyphicon-trash" data-toggle="eliminar" title="Eliminar"></span></a>
+		 <a id="eliminar"  href="<?php echo base_url("usuarios_controller/eliminar/$dato->id") ?>" ><span class="btn-danger btn-xs glyphicon glyphicon-trash" data-toggle="eliminar" title="Eliminar"></span></a>
 		</td>
 
 		</tr>
@@ -93,14 +95,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     	  <div class="modal-dialog">
 				<div class="loginmodal-container">
 					<h1>Agregar Usuario</h1><br>
-				  <form action="<?php echo base_url();?>index.php/usuarios_controller/agregarUsuarios" method="post">
+				  <form action="<?php echo base_url();?>usuarios_controller/agregarUsuarios" method="post">
+
+				<!-- muestro los errores individualmente -->
+
+				<!-- estas validaciones solo funcionan si el type es igual a al regla
+				osea type="password" con regla numeric etc -->
+				  	<?php echo form_error('nombre'); ?>
 					<input type="text" name="nombre" placeholder="Nombre">
+
+					<?php echo form_error('apellido'); ?>
 					<input type="text" name="apellido" placeholder="Apellido">
-					<input type="text" id="datepicker" name="nacimiento" placeholder="Fecha de nacimiento" >				
+
+					<?php echo form_error('nacimiento'); ?>
+					<input type="text" id="datepicker" name="nacimiento" placeholder="Fecha de nacimiento" >
+
+					<?php echo form_error('email'); ?>				
 					<input type="text" name="email" placeholder="Email">
+
+					<?php echo form_error('telefono'); ?>
 					<input type="text" name="telefono" placeholder="Telefóno">
+
+					<?php echo form_error('usuario'); ?>
 					<input type="text" name="usuario" placeholder="Usuario">
-					<input type="password" name="contrasena" placeholder="Contraseña">	
+
+					<?php echo form_error('contrasena'); ?>
+					<input type="password" name="contrasena" placeholder="Contraseña">
+
 					<input type="submit" name="submit"  class="login loginmodal-submit" value="Agregar">
 				  </form>
 					

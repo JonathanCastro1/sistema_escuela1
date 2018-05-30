@@ -8,11 +8,10 @@ class Dashboard_controller extends CI_Controller {
 		$data['usuario'] = $this->session->userdata('usuario');
 		$data['contrasena'] = $this->session->userdata('contrasena');
 
-		$data['datos'] = $this->usuarios_model->totalUsuarios();
-		$data['dato'] = $this->estudiantes_model->totalEstudiantes();
-		$data['dat'] = $this->profesores_model->totalProfesores();
-		$data['da'] = $this->calificaciones_model->estudiantesAprobados();
-		
+		$data['tUsuarios'] = $this->usuarios_model->totalUsuarios();
+		$data['tEstudiantes'] = $this->estudiantes_model->totalEstudiantes();
+		$data['tProfesores'] = $this->profesores_model->totalProfesores();
+		$data['tAprobados'] = $this->calificaciones_model->estudiantesAprobados();
 
 		$this->load->view('include/header');
 		$this->load->view('include/navbar',$data);

@@ -29,6 +29,30 @@ class Login_model extends CI_Model {
 		
 	}
 
+	public function subirImagen($imagen)
+	{		
+		
+		$sql = "INSERT INTO imagen VALUES
+		       (null,		       	
+		        '$imagen' )";
+
+		$query = $this->db->query($sql);
+
+		return $query;
+	}
+
+
+		public function mostrarImagen()
+	{		
+		
+		$sql = "SELECT ruta from imagen";
+
+		$query = $this->db->query($sql);
+
+		return $query->row();
+	}
+
+
 
 
 

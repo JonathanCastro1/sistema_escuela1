@@ -22,11 +22,11 @@
                     </li>
 
                     <li>
-                         <a class="navbar-brand fas fa-key" href="<?php echo base_url();?>index.php/login_controller/adminPass">Cambiar Contraseña</a>          
+                         <a class="navbar-brand fas fa-key" href="<?php echo base_url();?>login_controller/adminPass">Cambiar Contraseña</a>          
                     </li>  
 
                      <li>
-                         <a class="navbar-brand glyphicon glyphicon-remove" href="<?php echo base_url();?>index.php/login_controller/cerrarSession">Cerrar Session</a>
+                         <a class="navbar-brand glyphicon glyphicon-remove" href="<?php echo base_url();?>login_controller/cerrarSession">Cerrar Session</a>
                     </li>                  
                 
                 </ul>
