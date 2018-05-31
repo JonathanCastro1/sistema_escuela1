@@ -1,4 +1,4 @@
-# sistema_escuela
+# Sistema_escuela
 
 Schoolcastro 2.0 , un pequeño sistema de escuela
 
