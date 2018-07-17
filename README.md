@@ -1,9 +1,12 @@
-# sistema_escuela
+#Author: Jonathan Castro<br>
+Versiones:<br>
+Codeigniter 3.1.9<br>
+Base de datos Mysql<br>
+Jquery 3.3.1<br>
+Bootstrap 3.3.7<br> 
 
-Schoolcastro 2.0 , un pequeño sistema de escuela
+Sistema escuela<br>
 
-Proyecto realizado con codeigniter version 3.1.8
+https://vimeo.com/271301218<br>
 
-https://vimeo.com/271301218
-
-https://testcastro.000webhostapp.com/sistema_escuela/
+https://testcastro.000webhostapp.com/sistema_escuela/<br>
